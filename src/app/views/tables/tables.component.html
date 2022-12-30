@@ -1,0 +1,13 @@
+<div [style.width]="maxWidth+'px'" [style.height]="maxHeight+'px'" class="tablesContainer">
+	<div draggableBox *ngFor="let table of tables" class="table" [style.left]="table.posX+'px'"
+		[style.top]="table.posY+'px'" [style.width]="table.width+'px'" [style.height]="table.height+'px'"
+		(mousedown)="selectTable(table.id)" [ngClass]="{'round': table.shape === 'round'}">
+		{{ table.id }}
+		<button *ngIf="editMode" (click)="toggleShape(table.id)">Cambiar forma</button>
+	</div>
+</div>
+
+<h2>Presionar ctrl + click para mover la mesa</h2>
+
+<button (click)="toggleEditMode()">Modo edición</button>
+<button (click)="addTable()">Agregar mesa</button>
